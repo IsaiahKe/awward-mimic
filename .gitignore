@@ -1,2 +1,3 @@
-virtual
+virtual/
+award/settings.py
 *__pycache__
