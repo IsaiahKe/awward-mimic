@@ -1,0 +1,23 @@
+{% extends 'registration/base.html' %} {%load bootstrap4 %} {% block content %}
+<div class="container col-md-5">
+  <div class="card">
+  <div class="card-header">
+  <div class="text-center"><h2>User Login</h2></div>
+  </div>
+    <div class="card-body">
+    {% if form.errors %}
+
+    {% endif %}
+      <form method="post" action="/accounts/login/">
+      {%csrf_token%}
+     {% bootstrap_form form%}
+     <div class="form-group">
+     <p>Not registered User?<a href="/accounts/register/">Register</a></p>
+     <button class="btn btn-success">Login</button>
+     </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
