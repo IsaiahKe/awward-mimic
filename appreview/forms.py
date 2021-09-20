@@ -9,3 +9,8 @@ class UserForm(forms.ModelForm):
         fields=('last_name',)
         
         
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model=AppVote
+        exclude=['author','usability','content','design','total']
+        
