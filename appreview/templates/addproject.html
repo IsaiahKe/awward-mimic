@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% load bootstrap4 %} {% block content %}
+<div class="container col-6">
+  <div class="card">
+    <div class="card-header">
+      <div class="row"><div style="text-align:center;"><h2>Add Your Project</h2></div></div>
+    </div>
+    <div class="card-body">
+      <form action="" method="POST" enctype="multipart/form-data" novalidate>
+      {% csrf_token %}
+      {%bootstrap_form form %}
+      <input type="submit" class="form-group btn btn-success" Value="POST" name="submit">
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
