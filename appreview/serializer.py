@@ -1,9 +1,9 @@
 from django.db import models
 from django.db.models import fields
 from rest_framework import serializers
-from .models import Profile
+from .models import AppVote
 
-class Morara(serializers.ModelSerializer):
+class AppVoteApi(serializers.ModelSerializer):
     class Meta:
-        model=Profile
-        fields=('','')
+        model=AppVote
+        fields=('appname','appimage','author','livelink','usability','content','design','total')
