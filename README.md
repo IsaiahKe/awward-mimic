@@ -1,6 +1,6 @@
 ## Description
 
-This is a python project thal allows a admin to upload and paste photos. it uses django as framework
+This is a python project thal allows users to upload their apps and let them be rated by their peera, friends and professionald. it uses django as framework
 
 ## Requirements
 
