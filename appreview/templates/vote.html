@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container col-5">
+<div class="card">
+<div class="card-header">
+<h2>App Vote</h2>
+</div>
+<div class="card-body">
+{% if errors %}
+<div class=""><span style="color:red;">Ensure the input is between 1 and 10</span></div>
+{% endif %}
+<div class="col-6">
+<form method="post" action="">
+{% csrf_token %}
+{%bootstrap_form form%}
+</div>
+<button class="btn btn-success">Vote</button>
+</form>
+</div>
+</div>
+
+</div>
+{% endblock  %}
