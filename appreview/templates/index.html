@@ -4,24 +4,57 @@
 <div class="container-fluid">
  <div class="row" style="height:60px;">
    <div class="col-1" style="height:100%">Menu</div>
-  <div class="col-10" style="height:100%;display:flex;flex-direction:row-reverse;align-items:center;"><div class="avatar rounded-circle" style="height:50px;width:50px;border:1px solid;background-image:url({{user.profile.userPhoto.url}});background-size:cover;"></div>
+  <div class="col-10" style="height:100%;display:flex;flex-direction:row-reverse;align-items:center;">
+  <a href="/profile/{{user.id}}/"><div class="avatar rounded-circle" style="height:50px;width:50px;border:1px solid;background-image:url({{user.profile.userPhoto.url}});background-size:cover;"></div></a>
+  {% if user.last_name%}<div class="">{{user.last_name.upper}}-{{user.first_name.upper}}</div>
+  {% else %}
   <div class="">{{user.username.upper}}-{{user.username.upper}}</div>
-  
+  {% endif %}
+  {% if user.is_authenticated %}
+  <a href="/accounts/logout/"><div class="col-sm-1">logout</div></a>
+  {% else %}
+   <a href="/accounts/login/"><div class="col-sm-1">logout</div></a>
+  {% endif %}
+
   </div>
   <a href='/appreview/addproject/'><div style="height:100%;background:rgb(66, 171, 158);color:white;text-align:center;line-height:60px;text-decoration:none;">SUBMIT YOUR SITE</div></a>
  </div>
 </div>
-<div class="container-fluid" style="height:700px;background:#f0f0f0;">
+<div class="container-fluid" style="height:700px;background:transparent;padding:20px;background-image:url({{sod.appimage.url}});z-index:-2;">
+<div class="container-fluid" style="height:700px;position:relative;background:transparent;opacity:.0.9">
 <h3>site of the day</h3>
-<div class="row">Visit site</div>
+<a  href=""><div class="row" style="padding:40px;">Visit site</div></a>
+<div class="container col-8">
+  <div class="card" style="background:transparent;border:none;">  
+  <div class="card-body">
+    <div class="row">
+      <div class="col-3">Content:<span style="font-weight:bold;">{{sod.content}}</span></div>
+      <div class="col-2">Usability:<span style="font-weight:bold;">{{sod.usability}}</span></div>
+      <div class="col-2">Design:<span style="font-weight:bold;">{{sod.design}}</span></div>
+      <div class="col-2">Total:<span style="font-weight:bold;">{{sod.total|truncatechars:4}}</span></div>
+    </div>
+  </div>
+</div>
+</div>
+
 </div>
 <div class="container-fluid" >
-<div class="row">Othe rated apps <view more></div>
+<div class="row">Other rated apps</div>
+<div class="row">View More</div>
 <div class="" style="height:450px;display:flex;flex-direction:row;flex;justify-content:space-between">
 {% if apps %}
 {% for app in  apps%}
 <div class="card" style="height:400px;width:400px">
 <img src="{{app.appimage.url}}" height='250px',width='250px'>
+<div class="" style="padding:20px;">
+<div class="row"><span style="font-weight:bold">{{app.appname}}</span></div>
+<div class="row" style="display:flex;flex-direction:row;justify-content:space-between;">
+<a href="/{{app.id}}/vote/"><div class="btn btn-primary" style="border-radius:30px;">Vote</div></a>
+<a href="{{app.livelink}}"><div class="btn btn-primary" style="border-radius:30px;">View</div></a>
+
+</div>
+<div class="row" style="">By: <span style="color:blue">{{app.author|capfirst|title}}</span></div>
+</div>
 </div>
 {% endfor %}
 {% else %}
@@ -29,7 +62,7 @@ No apps
 {% endif %}
 </div>
 </div>
-<div class="container-fluid" style="height:400px;">Nominees</div>
-<div class="container-fluid" style="height:400px;">Explore</div>
+{% comment %} <div class="container-fluid" style="height:400px;">Nominees</div>
+<div class="container-fluid" style="height:400px;">Explore</div> {% endcomment %}
 
 {% endblock %}
