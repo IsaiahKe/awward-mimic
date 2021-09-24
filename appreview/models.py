@@ -39,4 +39,6 @@ class AppVote(models.Model):
     
     def add_project(self):
         self.save()
+    def delete_app(self):
+        self.delete()
     
