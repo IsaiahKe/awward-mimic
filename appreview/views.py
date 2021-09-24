@@ -11,7 +11,6 @@ from .serializer import AppVoteApi
 from .permissions import IsAdminOrReadOnly
 
 
-
 # Create your views here.
 @login_required(login_url="/accounts/login")
 def homepage(request):
@@ -87,7 +86,6 @@ def add(request,id):
            
     vote=ProjectVote()
     title="App Vote"
-    
     return render(request,'vote.html',{"form":vote,"errors":errors,"title":title})
 def logout(request):
     auth.logout(request)
