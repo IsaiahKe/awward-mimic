@@ -29,8 +29,7 @@ def addproject(request):
             project=form.save(commit=False)
             project.author=request.user.username
             project.save()
-            redirect('index')
-        print(form.errors)   
+            return redirect('index')  
     form=ProjectForm()
     title="Add project"
     return render(request,"addproject.html",{"form":form,"title":title})
@@ -55,7 +54,7 @@ def updateprofile(request,id):
             profile.username_id=id
             profileform.save()
         
-        return('index')
+            return redirect('index')
     userform=UserForm()
     profileform=ProfileForm()
     title="Profile Update"
@@ -83,7 +82,7 @@ def add(request,id):
         if form.is_valid():
             errors=''
             AppVote.objects.filter(id=id).update(usability=usability,design=design,content=content,total=getv(res))
-           
+            return redirect('index')
     vote=ProjectVote()
     title="App Vote"
     return render(request,'vote.html',{"form":vote,"errors":errors,"title":title})
