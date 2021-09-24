@@ -23,7 +23,7 @@
 <div class="container-fluid" style="height:700px;background:transparent;padding:20px;background-image:url({{sod.appimage.url}});z-index:-2;">
 <div class="container-fluid" style="height:700px;position:relative;background-color: rgba(255,255,255,0.5);opacity:.0.5">
 <h3>site of the day</h3>
-<a  href=""><div class="row" style="padding:40px;">Visit site</div></a>
+<a  href="{{sod.livelink}}"><div class="row" style="padding:40px;">Visit site</div></a>
 <div class="container col-8">
   <div class="card" style="background:transparent;border:none;">  
   <div class="card-body">
@@ -34,13 +34,13 @@
       <div class="col-2">Total:<span style="font-weight:bold;">{{sod.total|truncatechars:4}}</span></div>
     </div>
   </div>
-</div>
+</div><a href="/{{app.id}}/vote/"><div class="btn btn-success">Vote</div></a>
 </div>
 
 </div>
 <div class="container-fluid" >
 <div class="row">Other rated apps</div>
-<div class="row">View More</div>
+<a href="/appreview/projects/"><div class="row">View More</div></a>
 <div class="" style="height:450px;display:flex;flex-direction:row;flex;justify-content:space-between">
 {% if apps %}
 {% for app in  apps%}

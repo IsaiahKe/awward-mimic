@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^profile/(\d)/',views.profile,name="profile"),
     url(r'^profileupdate/(\d)/',views.updateprofile,name='updateprofile'),
     url(r'^appreview/api/$',views.AppList.as_view()),
+    url(r'^appreview/projects/',views.projects, name="projects")
    
     
 ]

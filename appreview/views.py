@@ -18,8 +18,9 @@ def homepage(request):
     user=User.objects.get(id=request.user.id)
     apps=AppVote.objects.order_by('total')[:4]
     sod=AppVote.objects.order_by('total')[0]
-    print(sod.appname)
-    return render(request,'index.html',{"user":user,"apps":apps,"sod":sod})
+   
+    title="Homepage"
+    return render(request,'index.html',{"user":user,"apps":apps,"sod":sod,"title":title})
 @login_required(login_url="/accounts/login")
 def addproject(request):
 
@@ -32,8 +33,8 @@ def addproject(request):
             redirect('index')
         print(form.errors)   
     form=ProjectForm()
-    
-    return render(request,"addproject.html",{"form":form})
+    title="Add project"
+    return render(request,"addproject.html",{"form":form,"title":title})
 @login_required(login_url="/accounts/login/")
 def profile(request,id):
     user=User.objects.get(pk=id)
@@ -55,10 +56,11 @@ def updateprofile(request,id):
             profile.username_id=id
             profileform.save()
         
-        
+        return('index')
     userform=UserForm()
-    profileform=ProfileForm
-    return render(request,'update.html',{"userform":userform,"profileform":profileform})
+    profileform=ProfileForm()
+    title="Profile Update"
+    return render(request,'update.html',{"userform":userform,"profileform":profileform,"title":title})
 def add(request,id):
     errors=''
     if request.method=="POST":
@@ -84,11 +86,16 @@ def add(request,id):
             AppVote.objects.filter(id=id).update(usability=usability,design=design,content=content,total=getv(res))
            
     vote=ProjectVote()
+    title="App Vote"
     
-    return render(request,'vote.html',{"form":vote,"errors":errors})
+    return render(request,'vote.html',{"form":vote,"errors":errors,"title":title})
 def logout(request):
     auth.logout(request)
     return redirect('index')
+def projects(request):
+    apps=AppVote.objects.all()
+    title="Projects View"
+    return render(request,'projects.html',{"apps":apps,"title":title})
     
     
     #Api views
