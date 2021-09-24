@@ -1,0 +1,38 @@
+{%extends 'base.html'%} {% load bootstrap4 %} {% block content %}
+<div class="container-fluid">
+  <div class="">Posted Projects</div>
+  <div
+    class=""
+    style="display:flex;flex-direction:row;flex;justify-content:space-between"
+  >
+    {% if apps %}
+    {%for app in apps%}
+    <div class="card" style="height: 400px; width: 400px">
+      <img src="{{app.appimage.url}}" height="250px" ,width="250px" />
+      <div class="" style="padding: 20px">
+        <div class="row">
+          <span style="font-weight: bold">{{app.appname}}</span>
+        </div>
+        <div
+          class="row"
+          style="display: flex;flex-direction: row;justify-content: space-between;">
+          <a href="/{{app.id}}/vote/">
+                <div class="btn btn-primary" style="border-radius: 30px">
+                    Vote
+                </div>
+            </a>
+          <a href="{{app.livelink}}">
+             <div class="btn btn-primary" style="border-radius: 30px">View</div>
+          <a>
+        </div>
+        <div class="row" style="">
+          By: <span style="color: blue">{{app.author|capfirst|title}}</span>
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+    {%endif%}
+    </div>
+  </div>
+  {% endblock%}
+</div>
