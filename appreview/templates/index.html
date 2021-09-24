@@ -34,7 +34,7 @@
       <div class="col-2">Total:<span style="font-weight:bold;">{{sod.total|truncatechars:4}}</span></div>
     </div>
   </div>
-</div><a href="/{{app.id}}/vote/"><div class="btn btn-success">Vote</div></a>
+</div><a href="/{{sod.id}}/vote/"><div class="btn btn-success">Vote</div></a>
 </div>
 
 </div>
@@ -54,6 +54,8 @@
 
 </div>
 <div class="row" style="">By: <span style="color:blue">{{app.author|capfirst|title}}</span></div>
+ <div class="row"><span style="font-weight:bold;">Total Score: {{app.total |truncatechars:4}}</span></div>
+ 
 </div>
 </div>
 {% endfor %}
