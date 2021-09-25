@@ -6,17 +6,20 @@
    <div class="col-1" style="height:100%">Menu</div>
   <div class="col-10" style="height:100%;display:flex;flex-direction:row-reverse;align-items:center;">
   <a href="/profile/{{user.id}}/"><div class="avatar rounded-circle" style="height:50px;width:50px;border:1px solid;background-image:url({{user.profile.userPhoto.url}});background-size:cover;"></div></a>
+  {% if user.is_authenticated %}
   {% if user.last_name%}<div class="">{{user.last_name.upper}}-{{user.first_name.upper}}</div>
   {% else %}
   <div class="">{{user.username.upper}}-{{user.username.upper}}</div>
   {% endif %}
-  {% if user.is_authenticated %}
+  
   <a href="/accounts/logout/"><div class="col-sm-1">logout</div></a>
+  
+<a href="/appreview/projects/"><div class="col-sm-1">Projects</div></a>
+<a href="appreview/api"><div class="col-sm-1">API</div></a>
+  </div>
   {% else %}
    <a href="/accounts/login/"><div class="col-sm-1">logout</div></a>
   {% endif %}
-
-  </div>
   <a href='/appreview/addproject/'><div style="height:100%;background:rgb(66, 171, 158);color:white;text-align:center;line-height:60px;text-decoration:none;">SUBMIT YOUR SITE</div></a>
  </div>
 </div>
